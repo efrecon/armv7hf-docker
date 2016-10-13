@@ -1,4 +1,4 @@
-FROM efrecon/armv7hf-jessie
+FROM efrecon/armv7hf-debian:jessie
 MAINTAINER Emmanuel Frecon <efrecon@gmail.com>
 
 # Set the env variable DEBIAN_FRONTEND to noninteractive to get
