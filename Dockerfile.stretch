@@ -1,0 +1,15 @@
+FROM efrecon/armv7hf-jessie
+MAINTAINER Emmanuel Frecon <efrecon@gmail.com>
+
+# Set the env variable DEBIAN_FRONTEND to noninteractive to get
+# apt-get working without error output.
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN [ "cross-build-start" ]
+
+RUN sed -i 's/jessie/stretch/g' /etc/apt/sources.list
+RUN apt-get update && \
+    apt-get -y dist-upgrade && \
+    apt-get -y autoremove
+
+RUN [ "cross-build-end" ]
