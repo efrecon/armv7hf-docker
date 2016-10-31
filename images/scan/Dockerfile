@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN [ "cross-build-start" ]
 RUN apt-get update && \
     apt-get install -y imagemagick scanbd && \
-    apt-get autoremove && \
+    apt-get autoremove -y && \
     apt-get clean
 RUN sed -i "s/^\(\s*\)user\s*=.*/\1user = root/g" /etc/scanbd/scanbd.conf
 RUN sed -i "s/^\(\s*\)group\s*=.*/\1group = root/g" /etc/scanbd/scanbd.conf
