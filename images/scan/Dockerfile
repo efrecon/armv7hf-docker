@@ -15,8 +15,10 @@ RUN apt-get update && \
 RUN sed -i "s/^\(\s*\)user\s*=.*/\1user = root/g" /etc/scanbd/scanbd.conf
 RUN sed -i "s/^\(\s*\)group\s*=.*/\1group = root/g" /etc/scanbd/scanbd.conf
 RUN sed -i "s/^\(\s*\)scriptdir\s*=.*/\1scriptdir = \/usr\/share\/scanbd\/scripts/g" /etc/scanbd/scanbd.conf
+RUN sed -i "s/^\(\s*\)script\s*=.*/\1script = \"action.script\"/g" /etc/scanbd/scanbd.conf
 RUN [ "cross-build-end" ]
 
+VOLUME /var/spool/scan
 VOLUME /usr/share/scanbd/scripts
 
-ENTRYPOINT [ "scanbd", "-f" ]
+ENTRYPOINT [ "scanbd", "-f", "-d5" ]
