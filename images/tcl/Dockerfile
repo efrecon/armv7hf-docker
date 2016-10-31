@@ -40,8 +40,7 @@ RUN apt-get update && \
 			critcl \
 			xotcl \
 			tclxapian \
-			libtcl-chiark-1 && \
-    apt-get clean
+			libtcl-chiark-1
 RUN [ "cross-build-end" ]
            
 # Arrange for a decent tclreadline prompt in interactive mode
