@@ -9,9 +9,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update underlying ubuntu image and all necessary packages.
 RUN [ "cross-build-start" ]
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y scanbd \
-			imagemagick && \
+    apt-get install -y imagemagick scanbd && \
+    apt-get autoremove && \
     apt-get clean
 RUN sed -i "s/^\(\s*\)user\s*=.*/\1user = root/g" /etc/scanbd/scanbd.conf
 RUN sed -i "s/^\(\s*\)group\s*=.*/\1group = root/g" /etc/scanbd/scanbd.conf
@@ -20,5 +19,4 @@ RUN [ "cross-build-end" ]
 
 VOLUME /usr/share/scanbd/scripts
 
-#ENTRYPOINT [ "scanbd", "-f" ]
-ENTRYPOINT [ "ash" ] 
+ENTRYPOINT [ "scanbd", "-f" ]
